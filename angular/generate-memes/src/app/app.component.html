@@ -1,0 +1,6 @@
+<h1>Mi generador de Memes</h1>
+<app-form
+  (onChangeTxtAr)="cambiarTextoAr($event)"
+  (onChangeTxtAb)="cambiarTextoAb($event)"></app-form>
+
+<app-meme [textoArriba]="textoAr" [textoAbajo]="textoAb"></app-meme>
