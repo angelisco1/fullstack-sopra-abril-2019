@@ -11,6 +11,10 @@ import { CmpPropertyBindingComponent } from './cmp-databinding/cmp-property-bind
 import { CmpEventBindingComponent } from './cmp-databinding/cmp-event-binding/cmp-event-binding.component';
 import { CmpTwoWayBindingComponent } from './cmp-databinding/cmp-two-way-binding/cmp-two-way-binding.component';
 import { MiChuWayBindingComponent } from './cmp-databinding/mi-chu-way-binding/mi-chu-way-binding.component';
+import { CmpRefPlantillaComponent } from './cmp-databinding/cmp-ref-plantilla/cmp-ref-plantilla.component';
+import { CmpInputOutputComponent } from './cmp-input-output/cmp-input-output.component';
+import { CmpAComponent } from './cmp-input-output/cmp-a/cmp-a.component';
+import { CmpBComponent } from './cmp-input-output/cmp-b/cmp-b.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { MiChuWayBindingComponent } from './cmp-databinding/mi-chu-way-binding/m
     CmpPropertyBindingComponent,
     CmpEventBindingComponent,
     CmpTwoWayBindingComponent,
-    MiChuWayBindingComponent
+    MiChuWayBindingComponent,
+    CmpRefPlantillaComponent,
+    CmpInputOutputComponent,
+    CmpAComponent,
+    CmpBComponent
   ],
   imports: [
     BrowserModule,
