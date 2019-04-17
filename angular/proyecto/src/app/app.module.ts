@@ -15,6 +15,8 @@ import { CmpRefPlantillaComponent } from './cmp-databinding/cmp-ref-plantilla/cm
 import { CmpInputOutputComponent } from './cmp-input-output/cmp-input-output.component';
 import { CmpAComponent } from './cmp-input-output/cmp-a/cmp-a.component';
 import { CmpBComponent } from './cmp-input-output/cmp-b/cmp-b.component';
+import { CmpPipesComponent } from './cmp-pipes/cmp-pipes.component';
+import { DoblePipe } from './cmp-pipes/doble.pipe';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { CmpBComponent } from './cmp-input-output/cmp-b/cmp-b.component';
     CmpRefPlantillaComponent,
     CmpInputOutputComponent,
     CmpAComponent,
-    CmpBComponent
+    CmpBComponent,
+    CmpPipesComponent,
+    DoblePipe
   ],
   imports: [
     BrowserModule,
