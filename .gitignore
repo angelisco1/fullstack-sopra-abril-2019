@@ -1,3 +1,4 @@
-/typescript/*.js
-/node_modules
-/.DS_Store
+/**/typescript/*.js
+/**/node_modules
+/**/.DS_Store
+/**/.angulardoc.json
