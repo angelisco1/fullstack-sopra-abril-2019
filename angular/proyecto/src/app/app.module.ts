@@ -17,6 +17,8 @@ import { CmpAComponent } from './cmp-input-output/cmp-a/cmp-a.component';
 import { CmpBComponent } from './cmp-input-output/cmp-b/cmp-b.component';
 import { CmpPipesComponent } from './cmp-pipes/cmp-pipes.component';
 import { DoblePipe } from './cmp-pipes/doble.pipe';
+import { ReversePipe } from './cmp-pipes/reverse.pipe';
+import { HideWordsPipe } from './cmp-pipes/hide-words.pipe';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import { DoblePipe } from './cmp-pipes/doble.pipe';
     CmpAComponent,
     CmpBComponent,
     CmpPipesComponent,
-    DoblePipe
+    DoblePipe,
+    ReversePipe,
+    HideWordsPipe
   ],
   imports: [
     BrowserModule,
