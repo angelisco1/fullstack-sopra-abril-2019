@@ -1,0 +1,14 @@
+p.textoMeme {
+  font-size: 35px;
+  position: relative;
+  color: white;
+  text-align: center;
+}
+
+p.textoArriba {
+  top: 80px;
+}
+
+p.textoAbajo {
+  bottom: 80px;
+}
