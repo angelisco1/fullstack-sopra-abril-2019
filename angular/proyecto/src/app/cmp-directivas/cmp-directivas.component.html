@@ -1,0 +1,27 @@
+<h1>Directivas</h1>
+<h2>Estructurales</h2>
+<button type="button" (click)="cambiarMostrar()">Mostrando: {{ mostrar ? 'Si' : 'No' }}</button>
+<p *ngIf="mostrar">Se muestra si mostrar=true</p>
+
+<p *ngIf="mostrar; else else1">Se muestra si mostrar=true (IF 1)</p>
+<ng-template #else1>
+  <p>Se muestra si mostrar=false (ELSE 1)</p>
+</ng-template>
+
+<div *ngIf="mostrar; then if2 else else2"></div>
+<ng-template #if2>
+  <p>Se muestra si mostrar=true (IF 2)</p>
+</ng-template>
+<ng-template #else2>
+  <p>Se muestra si mostrar=false (ELSE 2)</p>
+</ng-template>
+
+<ul>
+  <li *ngFor="let mascota of mascotas; let pos = index">{{ pos }}: {{ mascota }}</li>
+</ul>
+
+<div [ngSwitch]="getMascotaRandom()">
+  <p *ngSwitchCase="'Gato'">Tengo un gato</p>
+  <p *ngSwitchCase="'Canario'">Tengo un canario</p>
+  <p *ngSwitchDefault>Tengo otra mascota</p>
+</div>
