@@ -20,8 +20,16 @@
   <li *ngFor="let mascota of mascotas; let pos = index">{{ pos }}: {{ mascota }}</li>
 </ul>
 
-<div [ngSwitch]="getMascotaRandom()">
+<div [ngSwitch]="miMascota">
   <p *ngSwitchCase="'Gato'">Tengo un gato</p>
   <p *ngSwitchCase="'Canario'">Tengo un canario</p>
   <p *ngSwitchDefault>Tengo otra mascota</p>
 </div>
+
+<h2>Atributos</h2>
+<p [ngClass]="getClases()">Un texto azul subrayado</p>
+<p [ngStyle]="{color: 'yellow', backgroundColor: 'black'}">Un texto amarillo con fondo negro</p>
+
+<p appMarcar>Texto marcado en rojo</p>
+<p [appMarcar]="'green'">Texto marcado en verde</p>
+<p [appMarcar]="'yellow'">Texto marcado en amarillo</p>

@@ -21,6 +21,8 @@ import { ReversePipe } from './cmp-pipes/reverse.pipe';
 import { HideWordsPipe } from './cmp-pipes/hide-words.pipe';
 import { CmpDirectivasComponent } from './cmp-directivas/cmp-directivas.component';
 import { FiltroPipe } from './cmp-pipes/filtro.pipe';
+import { MarcarDirective } from './cmp-directivas/marcar.directive';
+import { PowerModeDirective } from './cmp-directivas/power-mode.directive';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { FiltroPipe } from './cmp-pipes/filtro.pipe';
     ReversePipe,
     HideWordsPipe,
     CmpDirectivasComponent,
-    FiltroPipe
+    FiltroPipe,
+    MarcarDirective,
+    PowerModeDirective
   ],
   imports: [
     BrowserModule,

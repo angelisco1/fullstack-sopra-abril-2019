@@ -13,11 +13,13 @@ export class CmpDirectivasComponent implements OnInit {
     'Canario',
     'Pez'
   ];
+  miMascota: string = '';
 
 
   constructor() { }
 
   ngOnInit() {
+    this.miMascota = this.getMascotaRandom();
   }
 
   cambiarMostrar() {
@@ -27,5 +29,12 @@ export class CmpDirectivasComponent implements OnInit {
   getMascotaRandom() {
     const pos = Math.floor(Math.random()*this.mascotas.length);
     return this.mascotas[pos];
+  }
+
+  getClases() {
+    return {
+      azul: this.mostrar,
+      subrayado: this.mostrar
+    };
   }
 }
