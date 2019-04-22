@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { MiPrimerComponenteComponent } from './mi-primer-componente/mi-primer-componente.component';
@@ -27,6 +27,7 @@ import { CmpServiciosComponent } from './cmp-servicios/cmp-servicios.component';
 import { UsuarioAComponent } from './cmp-servicios/usuario-a/usuario-a.component';
 import { UsuarioBComponent } from './cmp-servicios/usuario-b/usuario-b.component';
 import { ChatService } from './cmp-servicios/chat.service';
+import { CmpFormulariosComponent } from './cmp-formularios/cmp-formularios.component';
 
 @NgModule({
   declarations: [
@@ -53,11 +54,13 @@ import { ChatService } from './cmp-servicios/chat.service';
     PowerModeDirective,
     CmpServiciosComponent,
     UsuarioAComponent,
-    UsuarioBComponent
+    UsuarioBComponent,
+    CmpFormulariosComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     // ChatService
