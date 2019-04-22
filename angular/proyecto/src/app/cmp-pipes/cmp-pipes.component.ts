@@ -14,10 +14,15 @@ export class CmpPipesComponent implements OnInit {
 
   fechaVenta: Date = new Date(2019, 3, 18);
 
+  nombres = ['Robb', 'Arya', 'Rickon', 'Sansa', 'Bran', 'Jon'];
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addNombre(nombre) {
+    this.nombres.push(nombre);
   }
 
 }

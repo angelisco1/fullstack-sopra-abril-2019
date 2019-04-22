@@ -7,4 +7,15 @@
   <hr>
   <p>{{descripcion | hideWords:['bee', 'butt']}}...</p>
   <p>{{descripcion | hideWords:['bee', 'butt']:'-'}}...</p>
+  <hr>
+  <input type="text" (change)="addNombre($event.target.value)" placeholder="Intro para añadir el nombre">
+
+  <ul>
+    <li *ngFor="let nombre of nombres">{{nombre}}</li>
+  </ul>
+
+  <ul>
+    <li *ngFor="let nombre of nombres | filtro:'a'">{{nombre}}</li>
+  </ul>
+
 </div>
