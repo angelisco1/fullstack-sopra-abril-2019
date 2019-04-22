@@ -23,6 +23,10 @@ import { CmpDirectivasComponent } from './cmp-directivas/cmp-directivas.componen
 import { FiltroPipe } from './cmp-pipes/filtro.pipe';
 import { MarcarDirective } from './cmp-directivas/marcar.directive';
 import { PowerModeDirective } from './cmp-directivas/power-mode.directive';
+import { CmpServiciosComponent } from './cmp-servicios/cmp-servicios.component';
+import { UsuarioAComponent } from './cmp-servicios/usuario-a/usuario-a.component';
+import { UsuarioBComponent } from './cmp-servicios/usuario-b/usuario-b.component';
+import { ChatService } from './cmp-servicios/chat.service';
 
 @NgModule({
   declarations: [
@@ -46,13 +50,18 @@ import { PowerModeDirective } from './cmp-directivas/power-mode.directive';
     CmpDirectivasComponent,
     FiltroPipe,
     MarcarDirective,
-    PowerModeDirective
+    PowerModeDirective,
+    CmpServiciosComponent,
+    UsuarioAComponent,
+    UsuarioBComponent
   ],
   imports: [
     BrowserModule,
     FormsModule
   ],
-  providers: [],
+  providers: [
+    // ChatService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
