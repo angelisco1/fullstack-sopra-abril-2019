@@ -1,47 +1,51 @@
 import { Injectable, EventEmitter } from '@angular/core';
 import { Tarea } from './tarea';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TareasService {
+  private URL: string = 'https://todo-list-603ba.firebaseio.com/tasks';
 
-  private tareas: Array<Tarea> = [
-    new Tarea('Ver GoT', true, '0'),
-    new Tarea('Acabar la lista de tareas', false, '1'),
-  ];
-  private idCont: number = 2;
   sendTarea = new EventEmitter<Tarea>();
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getTareas(): Array<Tarea> {
-    return this.tareas;
+  getTareas(): Observable<Array<Tarea>> {
+    return this.http.get(`${this.URL}.json`).pipe(
+      map((resp) => this.parseResponseToArray(resp))
+    );
   }
 
-  getTarea(id: string): Tarea {
-    return this.tareas.find(tarea => {
-      return tarea.id === id;
-    })
+  addTarea(nombre: string): Observable<any> {
+    const tarea = {nombre: nombre, completada: false};
+    return this.http.post(`${this.URL}.json`, tarea);
   }
 
-  addTarea(nombre: string): void {
-    const nuevaTarea = new Tarea(nombre, false, this.idCont+'');
-    this.tareas.push(nuevaTarea);
-    this.idCont++;
+  deleteTarea(id: string): Observable<any> {
+    return this.http.delete(`${this.URL}/${id}.json`);
   }
 
-  deleteTarea(tarea: Tarea): void {
-    const pos = this.tareas.indexOf(tarea);
-    this.tareas.splice(pos, 1);
-  }
+  updateTarea(tarea: Tarea): Observable<any> {
+    const tareaActualizada = {nombre: tarea.nombre, completada: tarea.completa};
 
-  updateTarea(tareaVieja: Tarea, tareaNueva: Tarea): void {
-    const pos = this.tareas.indexOf(tareaVieja);
-    this.tareas[pos] = tareaNueva;
+    return this.http.put(`${this.URL}/${tarea.id}.json`, tareaActualizada);
   }
 
   sendTareaToEdit(tarea: Tarea): void {
     this.sendTarea.emit(tarea);
+  }
+
+  parseResponseToArray(resp): Array<Tarea> {
+    let arrayTareas: Array<Tarea> = [];
+    for (let id in resp) {
+      const obj = resp[id];
+      const tarea = new Tarea(obj.nombre, obj.completada, id);
+      arrayTareas.push(tarea);
+    }
+    return arrayTareas;
   }
 }
