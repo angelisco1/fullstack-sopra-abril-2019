@@ -15,7 +15,9 @@ export class TareaComponent implements OnInit {
   }
 
   eliminar() {
-    this.tareasService.deleteTarea(this.tarea.id).subscribe();
+    this.tareasService.deleteTarea(this.tarea.id).subscribe(() => {
+      this.tareasService.actualizarLista();
+    });
   }
 
   actualizar() {
@@ -25,7 +27,9 @@ export class TareaComponent implements OnInit {
       this.tarea.id
     );
 
-    this.tareasService.updateTarea(tareaActualizada).subscribe();
+    this.tareasService.updateTarea(tareaActualizada).subscribe(() => {
+      this.tareasService.actualizarLista();
+    });
   }
 
   editar() {

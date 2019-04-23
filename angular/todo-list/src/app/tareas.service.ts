@@ -11,6 +11,7 @@ export class TareasService {
   private URL: string = 'https://todo-list-603ba.firebaseio.com/tasks';
 
   sendTarea = new EventEmitter<Tarea>();
+  datosCambiados = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) { }
 
@@ -33,6 +34,10 @@ export class TareasService {
     const tareaActualizada = {nombre: tarea.nombre, completada: tarea.completa};
 
     return this.http.put(`${this.URL}/${tarea.id}.json`, tareaActualizada);
+  }
+
+  actualizarLista(): void {
+    this.datosCambiados.emit(true);
   }
 
   sendTareaToEdit(tarea: Tarea): void {
