@@ -28,6 +28,7 @@ import { UsuarioAComponent } from './cmp-servicios/usuario-a/usuario-a.component
 import { UsuarioBComponent } from './cmp-servicios/usuario-b/usuario-b.component';
 import { ChatService } from './cmp-servicios/chat.service';
 import { CmpFormulariosComponent } from './cmp-formularios/cmp-formularios.component';
+import { CmpObservablesComponent } from './cmp-observables/cmp-observables.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { CmpFormulariosComponent } from './cmp-formularios/cmp-formularios.compo
     CmpServiciosComponent,
     UsuarioAComponent,
     UsuarioBComponent,
-    CmpFormulariosComponent
+    CmpFormulariosComponent,
+    CmpObservablesComponent
   ],
   imports: [
     BrowserModule,
