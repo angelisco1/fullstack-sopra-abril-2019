@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TareasService } from '../tareas.service';
+import { Tarea } from '../tarea';
 
 @Component({
   selector: 'app-form',
@@ -10,20 +11,40 @@ import { TareasService } from '../tareas.service';
 export class FormComponent implements OnInit {
 
   formTarea: FormGroup;
+  esNuevaTarea = true;
+  editarTarea: Tarea;
 
   constructor(private tareasService: TareasService) { }
 
   ngOnInit() {
+    this.inicializarForm();
+    this.tareasService.sendTarea.subscribe((tarea: Tarea) => {
+      this.editarTarea = tarea;
+      this.esNuevaTarea = false;
+      this.inicializarForm();
+    });
+  }
+
+  inicializarForm() {
+    let nombreTarea = this.esNuevaTarea ? '' : this.editarTarea.nombre;
     this.formTarea = new FormGroup({
-      nombre: new FormControl('', Validators.required)
+      nombre: new FormControl(nombreTarea, Validators.required)
     });
   }
 
   guardar() {
-    console.log(this.formTarea.value.nombre);
-    this.tareasService.addTarea(this.formTarea.value.nombre);
+    let nombreTarea = this.formTarea.value.nombre;
+    console.log(nombreTarea);
+
+    if (this.esNuevaTarea) {
+      this.tareasService.addTarea(nombreTarea);
+    } else {
+      const tareaActualizada = new Tarea(nombreTarea, this.editarTarea.completa, this.editarTarea.id);
+      this.tareasService.updateTarea(this.editarTarea, tareaActualizada);
+    }
 
     this.formTarea.reset();
+    this.esNuevaTarea = true;
   }
 
 }

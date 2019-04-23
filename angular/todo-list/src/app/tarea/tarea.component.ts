@@ -28,4 +28,8 @@ export class TareaComponent implements OnInit {
     this.tareasService.updateTarea(this.tarea, tareaActualizada)
   }
 
+  editar() {
+    this.tareasService.sendTareaToEdit(this.tarea);
+  }
+
 }

@@ -1,4 +1,4 @@
-<h2>Nueva tarea</h2>
+<h2>{{esNuevaTarea ? 'Nueva' : 'Editar'}} tarea</h2>
 <form [formGroup]="formTarea" (ngSubmit)="guardar()">
   <div>
     <label for="nombre">Nombre</label>

@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 import { Tarea } from './tarea';
 
 @Injectable({
@@ -10,8 +10,8 @@ export class TareasService {
     new Tarea('Ver GoT', true, '0'),
     new Tarea('Acabar la lista de tareas', false, '1'),
   ];
-
   private idCont: number = 2;
+  sendTarea = new EventEmitter<Tarea>();
 
   constructor() { }
 
@@ -39,5 +39,9 @@ export class TareasService {
   updateTarea(tareaVieja: Tarea, tareaNueva: Tarea): void {
     const pos = this.tareas.indexOf(tareaVieja);
     this.tareas[pos] = tareaNueva;
+  }
+
+  sendTareaToEdit(tarea: Tarea): void {
+    this.sendTarea.emit(tarea);
   }
 }
