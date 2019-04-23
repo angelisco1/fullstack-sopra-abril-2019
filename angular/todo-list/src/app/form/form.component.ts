@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { TareasService } from '../tareas.service';
 
 @Component({
   selector: 'app-form',
@@ -7,13 +9,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FormComponent implements OnInit {
 
-  constructor() { }
+  formTarea: FormGroup;
+
+  constructor(private tareasService: TareasService) { }
 
   ngOnInit() {
+    this.formTarea = new FormGroup({
+      nombre: new FormControl('', Validators.required)
+    });
   }
 
   guardar() {
-    console.log('TODO: hay que hacerlo');
+    console.log(this.formTarea.value.nombre);
+    this.tareasService.addTarea(this.formTarea.value.nombre);
+
+    this.formTarea.reset();
   }
 
 }

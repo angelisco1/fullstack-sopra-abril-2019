@@ -7,7 +7,7 @@ import { Tarea } from './tarea';
 export class TareasService {
 
   private tareas: Array<Tarea> = [
-    new Tarea('Ver GoT', false, '0'),
+    new Tarea('Ver GoT', true, '0'),
     new Tarea('Acabar la lista de tareas', false, '1'),
   ];
 
@@ -31,11 +31,13 @@ export class TareasService {
     this.idCont++;
   }
 
-  // deleteTarea(id: string): void {
+  deleteTarea(tarea: Tarea): void {
+    const pos = this.tareas.indexOf(tarea);
+    this.tareas.splice(pos, 1);
+  }
 
-  // }
-
-  // updateTarea(tarea: Tarea): void {
-
-  // }
+  updateTarea(tareaVieja: Tarea, tareaNueva: Tarea): void {
+    const pos = this.tareas.indexOf(tareaVieja);
+    this.tareas[pos] = tareaNueva;
+  }
 }

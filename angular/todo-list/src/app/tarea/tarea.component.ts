@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Tarea } from '../tarea';
+import { TareasService } from '../tareas.service';
 
 @Component({
   selector: 'app-tarea',
@@ -8,9 +9,23 @@ import { Tarea } from '../tarea';
 })
 export class TareaComponent implements OnInit {
   @Input() tarea: Tarea;
-  constructor() { }
+  constructor(private tareasService: TareasService) { }
 
   ngOnInit() {
+  }
+
+  eliminar() {
+    this.tareasService.deleteTarea(this.tarea);
+  }
+
+  actualizar() {
+    const tareaActualizada = new Tarea(
+      this.tarea.nombre,
+      !this.tarea.completa,
+      this.tarea.id
+    );
+
+    this.tareasService.updateTarea(this.tarea, tareaActualizada)
   }
 
 }
