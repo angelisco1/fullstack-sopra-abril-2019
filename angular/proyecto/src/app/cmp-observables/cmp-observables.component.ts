@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, Subscription, Observable, Observer } from 'rxjs';
+import { map, filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-cmp-observables',
@@ -12,8 +13,9 @@ export class CmpObservablesComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    this.obsIntervalo();
-    this.obsMsg();
+    // this.obsIntervalo();
+    // this.obsMsg();
+    // this.obsIntervalConOperadores();
   }
 
   obsMsg() {
@@ -51,10 +53,32 @@ export class CmpObservablesComponent implements OnInit {
     this.subscriptions.push(subscription);
   }
 
+  obsIntervalConOperadores() {
+    const miObservable = interval(1000)
+      .pipe(
+        map((num) => {
+          return num * 2;
+        }),
+        filter((num) => {
+          return num > 10;
+        })
+      );
+
+
+    const subscription = miObservable.subscribe((dato) => {
+      console.log(dato);
+    });
+    this.subscriptions.push(subscription);
+  }
+
   desubscribirnos() {
     this.subscriptions.forEach((subs) => {
       subs.unsubscribe();
     })
+  }
+
+  getTrabajos() {
+
   }
 
   ngOnDestroy() {
