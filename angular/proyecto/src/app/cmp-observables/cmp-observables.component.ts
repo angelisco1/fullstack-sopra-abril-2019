@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { interval, Subscription, Observable, Observer } from 'rxjs';
 import { map, filter } from 'rxjs/operators';
+import { TrabajosService } from './trabajos.service';
 
 @Component({
   selector: 'app-cmp-observables',
@@ -10,7 +11,7 @@ import { map, filter } from 'rxjs/operators';
 export class CmpObservablesComponent implements OnInit {
 
   subscriptions: Array<Subscription> = [];
-  constructor() { }
+  constructor(private trabajosService: TrabajosService) { }
 
   ngOnInit() {
     // this.obsIntervalo();
@@ -78,7 +79,11 @@ export class CmpObservablesComponent implements OnInit {
   }
 
   getTrabajos() {
+    const subs = this.trabajosService.getOfertas().subscribe((resp) => {
+      console.log(resp);
+    });
 
+    this.subscriptions.push(subs);
   }
 
   ngOnDestroy() {
