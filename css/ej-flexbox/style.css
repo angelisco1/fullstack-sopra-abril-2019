@@ -1,0 +1,33 @@
+div.contenedor {
+  background-color: black;
+  /* width: 700px; */
+  width: 100%;
+  height: 500px;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+
+div.item {
+  border: 1px solid white;
+  background-color: orange;
+  width: 200px;
+  height: 200px;
+  order: 2;
+}
+
+div.item.derecha {
+  justify-self: end;
+}
+
+div.item.preferido {
+  order: 1;
+}
+
+@media (max-width: 400px) {
+  div.menu {
+    display: none;
+  }
+}
