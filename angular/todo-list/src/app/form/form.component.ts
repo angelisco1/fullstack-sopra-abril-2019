@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TareasService } from '../tareas.service';
 import { Tarea } from '../tarea';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-form',
@@ -14,14 +15,18 @@ export class FormComponent implements OnInit {
   esNuevaTarea = true;
   editarTarea: Tarea;
 
-  constructor(private tareasService: TareasService) { }
+  constructor(private tareasService: TareasService, private activatedR: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
     this.inicializarForm();
-    this.tareasService.sendTarea.subscribe((tarea: Tarea) => {
-      this.editarTarea = tarea;
-      this.esNuevaTarea = false;
-      this.inicializarForm();
+    this.activatedR.paramMap.subscribe(params => {
+      if (params.has('idTarea')) {
+        this.esNuevaTarea = false;
+        this.tareasService.getTarea(params.get('idTarea')).subscribe(tarea => {
+          this.editarTarea = tarea
+          this.inicializarForm();
+        });
+      }
     });
   }
 
@@ -38,14 +43,14 @@ export class FormComponent implements OnInit {
 
     if (this.esNuevaTarea) {
       this.tareasService.addTarea(nombreTarea).subscribe(() => {
-        this.tareasService.actualizarLista();
+        this.router.navigate(['/'])
       });
 
     } else {
       const tareaActualizada = new Tarea(nombreTarea, this.editarTarea.completa, this.editarTarea.id);
 
       this.tareasService.updateTarea(tareaActualizada).subscribe(() => {
-        this.tareasService.actualizarLista();
+        this.router.navigate(['/'])
       });
     }
 

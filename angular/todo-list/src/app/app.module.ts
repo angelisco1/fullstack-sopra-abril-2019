@@ -7,6 +7,7 @@ import { AppComponent } from './app.component';
 import { FormComponent } from './form/form.component';
 import { ListaTareasComponent } from './lista-tareas/lista-tareas.component';
 import { TareaComponent } from './tarea/tarea.component';
+import { Router } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { TareaComponent } from './tarea/tarea.component';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    Router
   ],
   providers: [],
   bootstrap: [AppComponent]

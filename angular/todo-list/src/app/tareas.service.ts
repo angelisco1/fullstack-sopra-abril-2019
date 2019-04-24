@@ -4,13 +4,16 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+interface ITarea {
+  completada: boolean,
+  nombre: string
+}
+
 @Injectable({
   providedIn: 'root'
 })
 export class TareasService {
   private URL: string = 'https://todo-list-603ba.firebaseio.com/tasks';
-
-  sendTarea = new EventEmitter<Tarea>();
   datosCambiados = new EventEmitter<boolean>();
 
   constructor(private http: HttpClient) { }
@@ -18,6 +21,14 @@ export class TareasService {
   getTareas(): Observable<Array<Tarea>> {
     return this.http.get(`${this.URL}.json`).pipe(
       map((resp) => this.parseResponseToArray(resp))
+    );
+  }
+
+  getTarea(id: string): Observable<Tarea> {
+    return this.http.get(`${this.URL}/${id}.json`).pipe(
+      map((resp: ITarea) => {
+        return new Tarea(resp.nombre, resp.completada, id)
+      })
     );
   }
 
@@ -38,10 +49,6 @@ export class TareasService {
 
   actualizarLista(): void {
     this.datosCambiados.emit(true);
-  }
-
-  sendTareaToEdit(tarea: Tarea): void {
-    this.sendTarea.emit(tarea);
   }
 
   parseResponseToArray(resp): Array<Tarea> {

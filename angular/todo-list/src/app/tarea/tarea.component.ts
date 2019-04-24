@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Tarea } from '../tarea';
 import { TareasService } from '../tareas.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tarea',
@@ -9,7 +10,7 @@ import { TareasService } from '../tareas.service';
 })
 export class TareaComponent implements OnInit {
   @Input() tarea: Tarea;
-  constructor(private tareasService: TareasService) { }
+  constructor(private tareasService: TareasService, private router: Router) { }
 
   ngOnInit() {
   }
@@ -33,7 +34,7 @@ export class TareaComponent implements OnInit {
   }
 
   editar() {
-    this.tareasService.sendTareaToEdit(this.tarea);
+    this.router.navigate(['/editar-tarea', this.tarea.id]);
   }
 
 }

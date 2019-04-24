@@ -23,5 +23,4 @@ export class ListaTareasComponent implements OnInit {
   inicializarTareas() {
     this.tareasService.getTareas().subscribe(tareas => this.tareas = tareas);
   }
-
 }
