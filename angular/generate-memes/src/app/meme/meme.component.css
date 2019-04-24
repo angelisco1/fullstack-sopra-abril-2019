@@ -3,12 +3,13 @@ p.textoMeme {
   position: relative;
   color: white;
   text-align: center;
+  margin: 0;
 }
 
 p.textoArriba {
-  top: 80px;
+  top: 45px;
 }
 
 p.textoAbajo {
-  bottom: 80px;
+  bottom: 45px;
 }

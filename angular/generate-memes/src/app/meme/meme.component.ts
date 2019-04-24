@@ -8,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 export class MemeComponent implements OnInit {
   @Input() textoArriba = '';
   @Input() textoAbajo = '';
-  imgUrl = 'https://i.imgflip.com/12dxv.jpg';
+  @Input() imgUrl = 'https://i.imgflip.com/9ehk.jpg';
   constructor() { }
 
   ngOnInit() {

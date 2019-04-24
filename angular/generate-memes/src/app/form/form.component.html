@@ -1,4 +1,5 @@
 <div>
-  <input type="text" placeholder="Texto arriba" (input)="changeTxtAr($event.target.value)">
-  <input type="text" placeholder="Texto abajo" (input)="changeTxtAb($event.target.value)">
+  <input type="text" placeholder="Texto arriba" (input)="changeTxtAr($event.target.value)" [value]="txtAr" >
+  <input type="text" placeholder="Texto abajo" (input)="changeTxtAb($event.target.value)" [value]="txtAb" >
+  <input type="text" placeholder="Url de la imagen" (input)="changeSrcImg($event.target.value)" [value]="srcImg" >
 </div>

@@ -2,10 +2,15 @@
 <div id="contenedor">
   <app-form
     id="form"
+    [srcImg]="img"
+    [txtAr]="textoAr"
+    [txtAb]="textoAb"
     (onChangeTxtAr)="cambiarTextoAr($event)"
-    (onChangeTxtAb)="cambiarTextoAb($event)"></app-form>
+    (onChangeTxtAb)="cambiarTextoAb($event)"
+    (onChangeSrcImg)="cambiarImgUrl($event)"></app-form>
   <app-meme
     id="meme"
+    [imgUrl]="img"
     [textoArriba]="textoAr"
     [textoAbajo]="textoAb"></app-meme>
 </div>
