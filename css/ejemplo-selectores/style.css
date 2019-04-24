@@ -1,0 +1,77 @@
+/* Selector global */
+/* * {
+  color: blue;
+} */
+
+
+/* Selector de etiqueta */
+h1 {
+  color: blue;
+}
+
+/* Selector de id */
+#marcado {
+  color: yellow;
+}
+
+/* Selector de clase */
+h1.fondoRojo {
+  /* background-color: #e32525; */
+  background-color: rgb(255, 0, 0);
+}
+
+/* Selector descendientes */
+div#principal div {
+  border: 1px solid orange;
+  /* border-width: 1px;
+  border-color: orange;
+  border-style: solid; */
+}
+
+/* Selector hijo directo */
+div#principal > div {
+  background-color: lightgray;
+}
+
+input {
+  border: 2px solid blue;
+}
+
+/* Pseudoclases */
+input:focus {
+  border: 2px solid orange;
+  background-color: red;
+}
+
+button:disabled {
+  border-radius: 30px;
+}
+
+h4:hover {
+  background-color: black;
+  color: white;
+}
+
+/* Filtros */
+button:not(.sin-filtro) {
+  border: 1px dashed yellowgreen;
+}
+
+
+/* Texto */
+
+.textoCentrado {
+  text-align: center;
+}
+
+p.textoTachado {
+  text-decoration: line-through;
+}
+
+p.textoCursiva {
+  font-style: italic;
+}
+
+p.textoNegrita {
+  font-weight: bold;
+}
